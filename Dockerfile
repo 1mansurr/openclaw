@@ -265,6 +265,7 @@ RUN install -d -m 0755 -o node -g node /home/node/.config && \
     stat -c '%U:%G %a' /home/node/.config/openclaw | grep -qx 'node:node 700'
 
 COPY --chown=node:node docker-entrypoint.sh /app/docker-entrypoint.sh
+COPY --chown=node:node openclaw.json /app/openclaw.json
 RUN chmod +x /app/docker-entrypoint.sh
 ENV NODE_ENV=production
 
