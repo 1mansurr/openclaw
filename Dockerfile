@@ -264,7 +264,8 @@ RUN install -d -m 0755 -o node -g node /home/node/.config && \
     stat -c '%U:%G %a' /home/node/.config | grep -qx 'node:node 755' && \
     stat -c '%U:%G %a' /home/node/.config/openclaw | grep -qx 'node:node 700'
 
-COPY --chown=node:node openclaw.json /home/node/.openclaw/openclaw.json
+COPY --chown=node:node docker-entrypoint.sh /app/docker-entrypoint.sh
+RUN chmod +x /app/docker-entrypoint.sh
 ENV NODE_ENV=production
 
 USER node
@@ -272,4 +273,4 @@ USER node
 HEALTHCHECK --interval=3m --timeout=10s --start-period=15s --retries=3 \
   CMD node -e "fetch('http://127.0.0.1:18789/healthz').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 ENTRYPOINT ["tini", "-s", "--"]
-CMD ["node", "openclaw.mjs", "gateway"]
+CMD ["/app/docker-entrypoint.sh", "node", "openclaw.mjs", "gateway"]
