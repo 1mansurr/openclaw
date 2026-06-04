@@ -14,5 +14,15 @@
         "primary": "anthropic/claude-sonnet-4-6"
       }
     }
+  },
+  "plugins": {
+    "entries": {
+      "browser": { "enabled": false },
+      "canvas": { "enabled": false },
+      "device-pair": { "enabled": false },
+      "file-transfer": { "enabled": false },
+      "phone-control": { "enabled": false },
+      "talk-voice": { "enabled": false }
+    }
   }
 }
