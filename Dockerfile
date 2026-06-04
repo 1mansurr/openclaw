@@ -266,6 +266,7 @@ RUN install -d -m 0755 -o node -g node /home/node/.config && \
 
 COPY --chown=node:node docker-entrypoint.sh /app/docker-entrypoint.sh
 COPY --chown=node:node openclaw.json /app/openclaw.json
+COPY --chown=node:node workspace/ /app/workspace/
 RUN chmod +x /app/docker-entrypoint.sh
 ENV NODE_ENV=production
 

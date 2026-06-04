@@ -12,4 +12,14 @@ else
   echo "[entrypoint] config already exists at $config_file"
   cat "$config_file"
 fi
+
+# Seed Mansur Jr's bootstrap files into the workspace.
+# The workspace lives on /tmp and resets every boot, so copy them fresh each start.
+workspace_dir="${OPENCLAW_WORKSPACE_DIR:-/home/node/.openclaw/workspace}"
+echo "[entrypoint] seeding workspace at $workspace_dir"
+mkdir -p "$workspace_dir"
+cp /app/workspace/*.md "$workspace_dir/"
+echo "[entrypoint] seeded workspace:"
+ls -1 "$workspace_dir"
+
 exec "$@"
