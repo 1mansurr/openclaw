@@ -2,6 +2,12 @@
   "gateway": {
     "mode": "local"
   },
+  "channels": {
+    "telegram": {
+      "dmPolicy": "open",
+      "allowFrom": ["630395944"]
+    }
+  },
   "agents": {
     "defaults": {
       "model": {
